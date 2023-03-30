@@ -5,59 +5,66 @@ Area and Perimeter
 '''
 import math
 
+class ShapeCalculator:
+    def __init__(self):
+        self.shape = ""
+
+    def get_shape(self):
+        self.shape = input("Enter a shape (rectangle, circle, triangle, parallelogram): ")
+
+    def calculate_area(self):
+        if self.shape == "rectangle":
+            length = float(input("Enter length: "))
+            width = float(input("Enter width: "))
+            area = length * width
+            print(f"The area of the rectangle is: {area}")
+        elif self.shape == "circle":
+            radius = float(input("Enter radius: "))
+            area = math.pi * radius**2
+            print(f"The area of the circle is: {area}")
+        elif self.shape == "triangle":
+            base = float(input("Enter base: "))
+            height = float(input("Enter height: "))
+            area = 0.5 * base * height
+            print(f"The area of the triangle is: {area}")
+        elif self.shape == "parallelogram":
+            base = float(input("Enter base: "))
+            height = float(input("Enter height: "))
+            area = base * height
+            print(f"The area of the parallelogram is: {area}")
+        else:
+            print("Invalid shape entered.")
+
+    def calculate_perimeter(self):
+        if self.shape == "rectangle":
+            length = float(input("Enter length: "))
+            width = float(input("Enter width: "))
+            perimeter = 2 * (length + width)
+            print(f"The perimeter of the rectangle is: {perimeter}")
+        elif self.shape == "circle":
+            radius = float(input("Enter radius: "))
+            perimeter = 2 * math.pi * radius
+            print(f"The perimeter of the circle is: {perimeter}")
+        elif self.shape == "triangle":
+            side1 = float(input("Enter side 1: "))
+            side2 = float(input("Enter side 2: "))
+            side3 = float(input("Enter side 3: "))
+            perimeter = side1 + side2 + side3
+            print(f"The perimeter of the triangle is: {perimeter}")
+        elif self.shape == "parallelogram":
+            side1 = float(input("Enter side 1: "))
+            side2 = float(input("Enter side 2: "))
+            perimeter = 2 * (side1 + side2)
+            print(f"The perimeter of the parallelogram is: {perimeter}")
+        else:
+            print("Invalid shape entered.")
+
+
+calculator = ShapeCalculator()
 while True:
-    print("Choose a shape to calculate its area:")
-    print("1. Rectangle")
-    print("2. Circle")
-    print("3. Triangle")
-    print("4. Parallelogram")
-    print("5. Exit")
-
-    choice = int(input("Enter choice (1-5): "))
-
-    if choice == 5:
-        print("Goodbye!")
+    calculator.get_shape()
+    calculator.calculate_area()
+    calculator.calculate_perimeter()
+    repeat = input("Do you want to calculate another shape? (Y/N)").lower()
+    if repeat != "y":
         break
-
-    shape = ""
-    length = 0
-    width = 0
-    radius = 0
-    base = 0
-    height = 0
-
-    if choice == 1:
-        shape = "rectangle"
-        length = float(input("Enter length of rectangle: "))
-        width = float(input("Enter width of rectangle: "))
-        area = length * width
-    elif choice == 2:
-        shape = "circle"
-        radius = float(input("Enter radius of circle: "))
-        area = math.pi * radius ** 2
-    elif choice == 3:
-        shape = "triangle"
-        base = float(input("Enter base of triangle: "))
-        height = float(input("Enter height of triangle: "))
-        area = 0.5 * base * height
-    elif choice == 4:
-        shape = "parallelogram"
-        base = float(input("Enter base of parallelogram: "))
-        height = float(input("Enter height of parallelogram: "))
-        area = base * height
-    else:
-        print("Invalid choice")
-        continue
-
-    print(f"The area of the {shape} is {area}")
-
-    # Store the user's input in a dictionary
-    user_input = {"shape": shape, "length": length, "width": width, "radius": radius, "base": base, "height": height}
-
-    # Display the user's input
-    print("You entered:")
-    for key, value in user_input.items():
-        if value != 0:
-            print(f"{key.capitalize()}: {value}")
-
-    print()
