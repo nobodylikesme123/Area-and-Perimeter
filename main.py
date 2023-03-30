@@ -13,25 +13,43 @@ print("4. Parallelogram")
 
 choice = int(input("Enter choice (1-4): "))
 
+shape = ""
+length = 0
+width = 0
+radius = 0
+base = 0
+height = 0
+
 if choice == 1:
+    shape = "rectangle"
     length = float(input("Enter length of rectangle: "))
     width = float(input("Enter width of rectangle: "))
     area = length * width
-    print("The area of the rectangle is", area)
 elif choice == 2:
+    shape = "circle"
     radius = float(input("Enter radius of circle: "))
     area = math.pi * radius ** 2
-    print("The area of the circle is", area)
 elif choice == 3:
+    shape = "triangle"
     base = float(input("Enter base of triangle: "))
     height = float(input("Enter height of triangle: "))
     area = 0.5 * base * height
-    print("The area of the triangle is", area)
 elif choice == 4:
+    shape = "parallelogram"
     base = float(input("Enter base of parallelogram: "))
     height = float(input("Enter height of parallelogram: "))
     area = base * height
-    print("The area of the parallelogram is", area)
 else:
     print("Invalid choice")
+    exit()
 
+print(f"The area of the {shape} is {area}")
+
+# Store the user's input in a dictionary
+user_input = {"shape": shape, "length": length, "width": width, "radius": radius, "base": base, "height": height}
+
+# Display the user's input
+print("You entered:")
+for key, value in user_input.items():
+    if value != 0:
+        print(f"{key.capitalize()}: {value}")
