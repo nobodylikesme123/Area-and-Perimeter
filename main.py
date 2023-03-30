@@ -3,25 +3,35 @@ Zavier Philpot
 Area and Perimeter
 
 '''
+import math
 
-import tkinter as tk
+print("Choose a shape to calculate its area:")
+print("1. Rectangle")
+print("2. Circle")
+print("3. Triangle")
+print("4. Parallelogram")
 
-def on_shape_selected(shape):
-    print(f"You selected the {shape} shape")
+choice = int(input("Enter choice (1-4): "))
 
-root = tk.Tk()
-root.title("Select a shape")
+if choice == 1:
+    length = float(input("Enter length of rectangle: "))
+    width = float(input("Enter width of rectangle: "))
+    area = length * width
+    print("The area of the rectangle is", area)
+elif choice == 2:
+    radius = float(input("Enter radius of circle: "))
+    area = math.pi * radius ** 2
+    print("The area of the circle is", area)
+elif choice == 3:
+    base = float(input("Enter base of triangle: "))
+    height = float(input("Enter height of triangle: "))
+    area = 0.5 * base * height
+    print("The area of the triangle is", area)
+elif choice == 4:
+    base = float(input("Enter base of parallelogram: "))
+    height = float(input("Enter height of parallelogram: "))
+    area = base * height
+    print("The area of the parallelogram is", area)
+else:
+    print("Invalid choice")
 
-circle_btn = tk.Button(root, text="Circle", command=lambda: on_shape_selected("circle"))
-circle_btn.pack()
-
-triangle_btn = tk.Button(root, text="Triangle", command=lambda: on_shape_selected("triangle"))
-triangle_btn.pack()
-
-square_btn = tk.Button(root, text="Square", command=lambda: on_shape_selected("square"))
-square_btn.pack()
-
-rectangle_btn = tk.Button(root, text="Rectangle", command=lambda: on_shape_selected("rectangle"))
-rectangle_btn.pack()
-
-root.mainloop()
